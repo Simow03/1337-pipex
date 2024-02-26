@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 17:35:00 by mstaali           #+#    #+#             */
-/*   Updated: 2024/02/26 21:43:50 by mstaali          ###   ########.fr       */
+/*   Created: 2024/02/26 21:36:49 by mstaali           #+#    #+#             */
+/*   Updated: 2024/02/26 21:43:04 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	execute(char *av, char **envp)
 {
-	if (!s || fd < 0)
-		return ;
-	while (*s++)
-		write(fd, s, 1);
+	return;
 }
