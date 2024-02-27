@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handle.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 17:37:38 by mstaali           #+#    #+#             */
-/*   Updated: 2024/02/27 19:40:40 by mstaali          ###   ########.fr       */
+/*   Created: 2023/10/31 17:49:12 by mstaali           #+#    #+#             */
+/*   Updated: 2024/02/27 18:01:32 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-void	error_mssg(void)
+int	ft_strncmp(const char *str1, const char *str2, size_t size)
 {
-	ft_putstr_fd ("\n\n\033[1;31;4m! INVALID ARGUMENTS !\033[0m"
-		"\n\n\n\033[4mUSAGE:\033[0m\n\t./pipex [file_input] [cmd1] [cmd2]"
-		" [file_output]\n\n", STDOUT_FILENO);
-	exit(EXIT_FAILURE);
-}
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-void	error(void)
-{
-	ft_putstr_fd ("\n\n\033[1;31;4m Error! :\033[0m\n\n", STDOUT_FILENO);
-	exit(EXIT_FAILURE);
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (size == 0 || (!s1 && !s2))
+		return (0);
+	while (i < (size - 1) && s1[i] == s2[i] && (s1[i] || s2[i]))
+		i++;
+	return (s1[i] - s2[i]);
 }

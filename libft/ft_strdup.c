@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handle.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 17:37:38 by mstaali           #+#    #+#             */
-/*   Updated: 2024/02/27 19:40:40 by mstaali          ###   ########.fr       */
+/*   Created: 2023/11/03 22:08:32 by mstaali           #+#    #+#             */
+/*   Updated: 2024/02/27 18:02:31 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-void	error_mssg(void)
+char	*ft_strdup(const char *str)
 {
-	ft_putstr_fd ("\n\n\033[1;31;4m! INVALID ARGUMENTS !\033[0m"
-		"\n\n\n\033[4mUSAGE:\033[0m\n\t./pipex [file_input] [cmd1] [cmd2]"
-		" [file_output]\n\n", STDOUT_FILENO);
-	exit(EXIT_FAILURE);
-}
+	char	*buffer;
+	char	*b;
 
-void	error(void)
-{
-	ft_putstr_fd ("\n\n\033[1;31;4m Error! :\033[0m\n\n", STDOUT_FILENO);
-	exit(EXIT_FAILURE);
+	buffer = (char *)malloc(ft_strlen(str) + 1);
+	if (!buffer)
+		return (NULL);
+	b = buffer;
+	while (*str)
+		*b++ = *str++;
+	*b = '\0';
+	return (buffer);
 }
