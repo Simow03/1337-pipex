@@ -6,29 +6,29 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 21:36:49 by mstaali           #+#    #+#             */
-/*   Updated: 2024/02/27 17:36:10 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/06 17:14:03 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*find_path(char *cmd,char **envp)
+char	*find_path(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
-	char	*part_path;
+	char	*b4_cmd;
 	int		i;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (ft_strnstr(envp[i], "PATH", 4) == NULL)
 		i++;
 	paths = ft_split(envp[i] + 5, ':');
 	i = 0;
 	while (paths[i])
 	{
-		part_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(part_path, cmd);
-		free(part_path);
+		b4_cmd = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(b4_cmd, cmd);
+		free(b4_cmd);
 		if (access(path, F_OK) == 0)
 			return (path);
 		free(path);
@@ -41,7 +41,7 @@ char	*find_path(char *cmd,char **envp)
 	return (NULL);
 }
 
-void	 execute(char *av, char **envp)
+void	execute(char *av, char **envp)
 {
 	char	**cmd;
 	char	*path;
