@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:38:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/01 17:48:02 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/06 23:55:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ char	*ft_strdup(const char *str);
 void	error_mssg(void);
 void	error(void);
 void	execute(char *av, char **envp);
-
+char	*find_path(char *cmd, char **envp);
 #endif
