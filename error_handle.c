@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:37:38 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/06 22:57:27 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/08 01:29:18 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,14 @@ void	error_mssg(void)
 void	error(void)
 {
 	perror("\n\033[1;31;4m Error! \033[0m");
+	exit(EXIT_FAILURE);
+}
+
+void	error_mssg_bonus(void)
+{
+	ft_putstr_fd ("\n\n\033[1;31;4m! INVALID ARGUMENTS !\033[0m"
+		"\n\n\033[4mUSAGE:\033[0m\n\t./pipex [file_input] [cmd1] [cmd2]"
+		" . . . [cmdn] [file_output]\n\n\t./pipex \"here_doc\" [LIMITER]"
+		" [cmd] [cmd1] [file_output]\n\n", STDOUT_FILENO);
 	exit(EXIT_FAILURE);
 }

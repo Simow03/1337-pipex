@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:36:41 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/06 23:55:13 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/08 01:42:19 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	child_process2(char **av, char **envp, int *fd)
 
 int	main(int ac, char **av, char **envp)
 {
-	int	fd[2];
-	int	pid1;
-	int	pid2;
+	pid_t	pid1;
+	pid_t	pid2;
+	int		fd[2];
 
 	if (ac == 5)
 	{
