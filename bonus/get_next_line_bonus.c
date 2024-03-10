@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:11:10 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/09 19:14:46 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/10 18:54:29 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	get_next_line(char **line)
 	readed = 0;
 	buffer = (char *)malloc(BUFFER_SIZE);
 	if (!buffer)
-		return (-1);
+		return (0);
 	readed = read(0, &c, 1);
 	while (readed && c != '\n' && c != '\0')
 	{
