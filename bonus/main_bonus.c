@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:46:53 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/10 18:13:04 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/12 01:17:30 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,32 @@ static void	child_process(char *av, char **envp)
 		error();
 	if (pid == 0)
 	{
-		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
+		close(fd[0]);
+		close(fd[1]);
 		execute(av, envp);
 	}
 	else
 	{
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
+		close(fd[0]);
 	}
+}
+
+void	last_command(char *av, char **envp, int fileout)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		dup2(fileout, STDOUT_FILENO);
+		execute(av, envp);
+	}
+	close(STDIN_FILENO);
+	while (wait(NULL) != -1)
+		continue ;
 }
 
 int	main(int ac, char **av, char **envp)
@@ -59,8 +75,8 @@ int	main(int ac, char **av, char **envp)
 		}
 		while (i < ac - 2)
 			child_process(av[i++], envp);
-		dup2(fileout, STDOUT_FILENO);
-		execute(av[ac - 2], envp);
+		last_command(av[ac - 2], envp, fileout);
 	}
-	error_mssg_bonus();
+	else
+		error_mssg_bonus();
 }

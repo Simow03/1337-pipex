@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:36:41 by mstaali           #+#    #+#             */
-/*   Updated: 2024/03/08 01:42:19 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/03/12 01:17:19 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	main(int ac, char **av, char **envp)
 			child_process2(av, envp, fd);
 		close(fd[0]);
 		close(fd[1]);
-		wait(NULL);
+		while (wait(NULL) != -1)
+			continue ;
 	}
 	else
 		error_mssg();
